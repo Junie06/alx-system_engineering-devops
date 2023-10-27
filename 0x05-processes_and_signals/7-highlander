@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Displays different texts and puts it to sleep inbetween
+
+while [ true ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+	if [ SIGTERM ]
+	echo "I am invincible!!!"
+done
