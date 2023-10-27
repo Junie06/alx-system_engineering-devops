@@ -4,8 +4,8 @@
 names='Best School'
 counter=0
 
-while [ $counter -lt 10 ]
+while [ "$counter" -lt 10 ]
 do
-  eco $names
-  (( count++ ))
+  echo $names
+  (( counter++ ))
 done

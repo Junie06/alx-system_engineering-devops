@@ -4,8 +4,8 @@
 names='Best School'
 counter=0
 
-until [ $counter -gt 10 ]
+until [ "$counter" -eq 10 ]
 do
   echo $names
-  (( count++ ))
+  (( counter++ ))
 done
