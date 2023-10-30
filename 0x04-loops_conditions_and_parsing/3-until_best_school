@@ -6,6 +6,6 @@ counter=0
 
 until [ "$counter" -eq 10 ]
 do
-  echo $names
+  echo "$names"
   (( counter++ ))
 done
