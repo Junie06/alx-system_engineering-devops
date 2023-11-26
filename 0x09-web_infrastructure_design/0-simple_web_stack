@@ -1,0 +1,17 @@
+https://imgur.com/f2fenF3
+
+Specifics:
+A server can be either a software program or a computer system that stores, processes, and delivers content e.g webpages to clients( web browser or a mobile application). In the figure above, the user requests the address of the website www.foobar.com. 
+The domain name(foobar.com) is the human-readable form( a string of words) to access the server, but it needs to be translated to its corresponding  IP address to retrieve the content requested by the user. 
+The www record is a CNAME DNS record, acting as an alias for the server's IP.
+The web server (Nginx) handles incoming HTTP requests, serving static content and directing dynamic requests to the application server.
+The application server executes the codebase, generating dynamic content and interacting with the database.
+The database (MySQL) stores and retrieves data for the website.
+HTTP is used for communication between the server and the user's computer.
+Issues:
+1. SPOF (Single Point of Failure):
+Having only one server makes the system vulnerable. If it fails, the entire website goes down.
+2. Downtime during Maintenance:
+Deploying new code or restarting the web server causes downtime, affecting user accessibility.
+3. Scaling Challenges:
+The infrastructure cannot handle a sudden influx of traffic efficiently. Scaling is limited with a single server setup.

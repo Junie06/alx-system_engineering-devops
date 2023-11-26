@@ -1,0 +1,7 @@
+https://i.imgur.com/BwdhwXy.png
+
+Explanations:
+Why additional elements were added: Splitting components (web server, application server, database) onto their own servers adds redundancy, improves scalability, and enhances security by isolating functions. If one component fails, it doesn't impact the others, allowing for more efficient resource allocation, easier maintenance, and better overall performance of your web infrastructure.
+Firewalls were added to each component to enhance security by controlling and monitoring incoming and outgoing traffic on each server, protecting against unauthorised access and potential threats.
+Monitoring tools were also added on each server to provide real-time insights into performance, help identify issues promptly, optimise resource usage, and ensure the overall health and reliability of the server infrastructure.
+Adding an extra load balancer configured as a cluster with the existing one improves the overall reliability and availability of the system. It ensures load balancing continuity, even if one load balancer fails, by seamlessly distributing incoming traffic between servers. This redundancy enhances fault tolerance, minimises downtime, and optimises the performance of the web infrastructure.

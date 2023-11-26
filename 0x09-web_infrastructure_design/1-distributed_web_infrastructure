@@ -1,0 +1,20 @@
+https://imgur.com/f2fenF3
+
+Specifics:
+Load Balancer (HAproxy): Introducing a load balancer helps distribute incoming traffic across multiple servers, improving performance and reliability.
+Distribution Algorithm: Round Robin algorithm is used.  Each server is used in turn, distributing requests equally.
+Setup: Active-Active setup is employed here. All servers actively handle requests.
+Servers (2): Two servers were added because servers increase system reliability, and they can handle a larger volume of traffic.
+Web Server (Nginx): It was added because, Nginx serves as the web server, handling HTTP requests and directing them to the application server.
+How a Database Primary-Replica (Master-Slave) Cluster Works: A primary-replica (master-slave) cluster is a type of database architecture that consists of two nodes: a primary node and a replica node. The primary node handles all write operations, and the replica node mirrors the data from the primary node.
+Difference Between Primary and Replica Nodes in Relation to the Application:
+Primary Node: Accepts write operations, which make changes to the database.
+Replica Node: Mirrors data from the primary node and is used for read operations. It does not handle write operations directly.
+
+Issues:
+SPOF: The load balancer is a potential single point of failure. If it fails, all incoming traffic is disrupted.
+Security issues:
+No firewall exposes the servers and database to potential threats.
+Not enforcing HTTPS leaves user data vulnerable during transmission.
+The absence of monitoring tools makes it difficult to detect and address issues quickly.
+
