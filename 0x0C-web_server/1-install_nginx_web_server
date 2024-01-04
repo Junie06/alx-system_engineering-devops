@@ -4,8 +4,7 @@
 #    Returns a page containing "Hello World!" when queried
 #    at the root with a curl GET request.
 
-apt-get update
-
+apt-get -y update
 apt-get install -y nginx
 
 # Creates the /etc/nginx/html directory, which will serve as the document root directory for Nginx.
@@ -15,7 +14,7 @@ touch /etc/nginx/html/index.html
 
 echo "Hello World!" > /etc/nginx/html/index.html
 
-printf %s "server {
+echo "server {
      listen      80;
      listen      [::]:80 default_server;
      root        /etc/nginx/html;
@@ -23,4 +22,4 @@ printf %s "server {
 }
 " > /etc/nginx/sites-available/default
 
-service nginx restart
+nginx -s reload
