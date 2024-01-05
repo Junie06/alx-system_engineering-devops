@@ -2,50 +2,20 @@
 # configures an Nginx server so that /redirect_me redirects to another page.
 
 #  updates the package lists for available software packages.
-apt-get update
+sudo apt-get update
 # installs the Nginx web server.
-apt-get install -y nginx
+sudo apt-get install -y nginx
 
-# Creates the /etc/nginx/html directory, which will serve as the document root directory for Nginx.
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
 
 echo "Hello World!" > /etc/nginx/html/index.html
 
-printf %s "server {
-     listen      80 default_server;
-     listen      [::]:80 default_server;
-     root        /etc/nginx/html;
-     index       index.html index.htm;
-}
-" > /etc/nginx/sites-available/default
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com/@themathsclub permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-touch /etc/nginx/html/404.html
+# code for error page and redirect error 404
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-echo "Ceci n'est pas une page" | sudo tee /etc/nginx/html/404.html
-
-
-echo "server {
-    listen      80;
-    listen      [::]:80;
-    root        /etc/nginx/html;
-    index       index.html index.htm;
-
-    index index.html index.htm index.nginx-debian.html;
-
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-
-    error_page 404 /404.html;
-    location /404 {
-      root /etc/nginx/html;
-      internal;
-    }
-
-}" | sudo tee /etc/nginx/sites-available/default
-
-sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-
-sudo nginx -t
-sudo service nginx reload
+# Restart Nginx
+service nginx restart
