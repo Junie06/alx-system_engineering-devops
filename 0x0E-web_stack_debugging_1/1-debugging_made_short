@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# Run Nginx without errors
-
-# Configure nginx to listen on all active IPs on port 8080
+# Run Nginx without errors on port 80
 cp -r /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
 sudo service nginx start
+sudo pkill nginx
